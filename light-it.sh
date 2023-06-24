@@ -27,6 +27,7 @@ echo ""
 echo "Generating app key..."
 echo ""
 ./vendor/bin/sail php artisan key:generate
+./vendor/bin/sail php artisan optimize
 
 echo ""
 echo "Performing migrations..."
