@@ -22,15 +22,15 @@ echo ""
 ./vendor/bin/sail up -d
 
 echo ""
+echo "Installing node packages..."
+echo ""
+./vendor/bin/sail npm install
+
+echo ""
 echo "Generating app key..."
 echo ""
 ./vendor/bin/sail php artisan key:generate
 ./vendor/bin/sail php artisan optimize
-
-echo ""
-echo "Installing node packages..."
-echo ""
-./vendor/bin/sail npm install
 
 echo ""
 echo "Performing migrations..."
