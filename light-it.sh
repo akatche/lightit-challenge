@@ -35,7 +35,7 @@ echo ""
 echo ""
 echo "Performing migrations..."
 echo ""
-./vendor/bin/sail php artisan migrate
+./vendor/bin/sail php artisan migrate --database=mysql
 
 echo ""
 echo "Running dev server..."
