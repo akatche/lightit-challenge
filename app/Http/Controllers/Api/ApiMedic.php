@@ -17,7 +17,7 @@ class ApiMedic extends Controller
      */
     public function symptoms()
     {
-        $data = Cache::remember('api-medic-symptoms',now()->addHour(),function () {
+        $data = Cache::remember('api-medic-symptoms',60*60,function () {
             $data = Http::apimedic()->get('symptoms');
             return $data->json();
         });
