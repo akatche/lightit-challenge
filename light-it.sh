@@ -40,4 +40,8 @@ echo ""
 echo ""
 echo "Running dev server..."
 echo ""
-./vendor/bin/sail npm run dev
+./vendor/bin/sail npm run build
+
+
+echo ""
+echo "Now, you can check the app on http://localhost"
