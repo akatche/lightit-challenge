@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
-use Illuminate\Http\Client\Request;
 
 class ApiMedicTest extends TestCase
 {
