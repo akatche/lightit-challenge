@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/symptoms', [ApiMedic::class,'symptoms']);
-Route::get('/diagnoses', [ApiMedic::class,'diagnoses']);
+Route::middleware('auth:sanctum')->get('/symptoms', [ApiMedic::class,'symptoms']);
+Route::middleware('auth:sanctum')->get('/diagnoses', [ApiMedic::class,'diagnoses']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

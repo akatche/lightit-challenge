@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Cache\RateLimiter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
@@ -18,6 +19,10 @@ class ApiMedic extends Controller
     {
         $data = Cache::remember('api-medic-symptoms',now()->addHour(),function () {
             $data = Http::apimedic()->get('symptoms');
+
+            //Increment API transactions made
+            RateLimiter::hit('api-medic');
+
             return $data->json();
         });
 
@@ -45,6 +50,9 @@ class ApiMedic extends Controller
                 'gender' => $gender,
                 'year_of_birth' => $year_of_birth
             ]);
+
+            //Increment API transactions made
+            RateLimiter::hit('api-medic');
 
             return $data->json();
         });

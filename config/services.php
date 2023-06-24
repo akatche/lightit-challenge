@@ -35,6 +35,7 @@ return [
         'api_key' => env('API_MEDIC_USERNAME'),
         'secret_key' => env('API_MEDIC_PASSWORD'),
         'auth_service_url' => env('API_MEDIC_AUTH_SERVICE'),
-        'health_service_url' => env('API_MEDIC_HEALTH_SERVICE')
+        'health_service_url' => env('API_MEDIC_HEALTH_SERVICE'),
+        'allowed_trancactions' => env('API_MEDIC_ALLOWED_TRANSACTIONS')
     ]
 ];
