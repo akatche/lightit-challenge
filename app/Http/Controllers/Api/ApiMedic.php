@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 
@@ -13,10 +14,13 @@ class ApiMedic extends Controller
      */
     public function symptoms()
     {
-        $test = Http::apimedic()->get('symptoms',[
-            'symptoms' => json_encode([45])
-        ]);
+        $data = Cache::remember('api-medic-symptoms',now()->addHour(),function () {
+            $data = Http::apimedic()->get('symptoms');
+            return $data->json();
+        });
 
-        return $test->json();
+        return response()->json([
+            'data' => $data
+        ]);
     }
 }

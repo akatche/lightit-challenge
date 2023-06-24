@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Http;
 class ApiMedicService
 {
     public function getApiAuthToken() : string {
-        if (Cache::has('symptom-checker-token')) {
-            return Cache::get('symptom-checker-token');
+        if (Cache::has('api-medic-auth-token')) {
+            return Cache::get('api-medic-auth-token');
         }
 
         $loginUrl = config('services.api_medic.auth_service_url') . '/login';
@@ -28,7 +28,7 @@ class ApiMedicService
 
         $data = $response->json();
 
-        return Cache::remember('symptom-checker-token', $data['ValidThrough'], function () use($data) {
+        return Cache::remember('api-medic-auth-token', $data['ValidThrough'], function () use($data) {
             return $data['Token'];
         });
     }
