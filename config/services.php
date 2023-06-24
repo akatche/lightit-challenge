@@ -32,9 +32,9 @@ return [
     ],
 
     'api_medic' => [
-        'username' => env('API_MEDIC_USERNAME'),
-        'password' => env('API_MEDIC_PASSWORD'),
-        'auth_service' => env('API_MEDIC_AUTH_SERVICE'),
-        'health_service' => env('API_MEDIC_HEALTH_SERVICE')
+        'api_key' => env('API_MEDIC_USERNAME'),
+        'secret_key' => env('API_MEDIC_PASSWORD'),
+        'auth_service_url' => env('API_MEDIC_AUTH_SERVICE'),
+        'health_service_url' => env('API_MEDIC_HEALTH_SERVICE')
     ]
 ];
