@@ -18,8 +18,13 @@ class ApiMedic extends Controller
     public function symptoms()
     {
         $data = Cache::remember('api-medic-symptoms',60*60,function () {
-            $data = Http::apimedic()->get('symptoms');
-            return $data->json();
+            $response = Http::apimedic()->get('symptoms');
+
+            if($response->failed()){
+                throw new \Exception('Failed to fetch symptoms list');
+            }
+
+            return $response->json();
         });
 
         return response()->json([

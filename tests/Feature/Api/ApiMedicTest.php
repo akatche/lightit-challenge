@@ -23,9 +23,7 @@ class ApiMedicTest extends TestCase
         $this->apiHealthEndpoint =  config('services.api_medic.health_service_url');
     }
 
-    /**
-     * A basic feature test example.
-     */
+
     public function test_symptoms_list_can_be_fetched(): void
     {
         $symptoms = [
@@ -77,6 +75,80 @@ class ApiMedicTest extends TestCase
             ->assertStatus(200)
             ->assertJson([
                 'data' => $symptoms,
+            ]);
+    }
+
+    public function test_symptoms_list_returns_well_formatted_error_when_api_auth_fails(): void
+    {
+        $symptoms = [
+            [
+                "ID" =>  45,
+                "Name" =>  "Acidez"
+            ],
+            [
+                "ID" =>  46,
+                "Name" =>  "Cansancio"
+            ]
+        ];
+
+        Http::fake([
+            "$this->apiLoginEndpoint/*" => Http::response([
+                'ValidThrough' => 7200,
+                'Token' => 'abdc'
+            ],401),
+
+            "$this->apiHealthEndpoint/*" => Http::response($symptoms),
+        ]);
+
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
+        // First Api call
+        $firstResponse = $this->getJson('/api/symptoms');
+
+        $firstResponse
+            ->assertStatus(404)
+            ->assertJson([
+                'message' => 'ApiMedic auth failed',
+            ]);
+    }
+
+    public function test_symptoms_list_returns_well_formatted_error_when_api_fetching_fails(): void
+    {
+        $symptoms = [
+            [
+                "ID" =>  45,
+                "Name" =>  "Acidez"
+            ],
+            [
+                "ID" =>  46,
+                "Name" =>  "Cansancio"
+            ]
+        ];
+
+        Http::fake([
+            "$this->apiLoginEndpoint/*" => Http::response([
+                'ValidThrough' => 7200,
+                'Token' => 'abdc'
+            ]),
+
+            "$this->apiHealthEndpoint/*" => Http::response($symptoms,401),
+        ]);
+
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
+        // First Api call
+        $firstResponse = $this->getJson('/api/symptoms');
+
+        $firstResponse
+            ->assertStatus(404)
+            ->assertJson([
+                'message' => 'Failed to fetch symptoms list',
             ]);
     }
 }
