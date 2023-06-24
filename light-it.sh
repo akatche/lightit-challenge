@@ -8,15 +8,13 @@ docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
     -w /var/www/html \
-    laravelsail/php82-composer:latest \
+    laravelsail/php81-composer:latest \
     composer install --ignore-platform-reqs
 
 echo ""
 echo "Copying Laravel env file..."
 echo ""
-if [ ! -f .env ]; then
-    cp -Rp .env.example .env
-fi
+cp -Rp .env.example .env
 
 echo ""
 echo "Starting containers..."
