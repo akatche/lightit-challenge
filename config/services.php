@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'api_medic' => [
+        'username' => env('API_MEDIC_USERNAME'),
+        'password' => env('API_MEDIC_PASSWORD'),
+        'auth_service' => env('API_MEDIC_AUTH_SERVICE'),
+        'health_service' => env('API_MEDIC_HEALTH_SERVICE')
+    ]
 ];
