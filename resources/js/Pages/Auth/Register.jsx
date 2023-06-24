@@ -5,6 +5,8 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import SelectForm from "@/Components/SelectForm.jsx";
+import {Button} from "flowbite-react";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -12,6 +14,8 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        birth_sex:'',
+        birth_date:'',
     });
 
     useEffect(() => {
@@ -26,9 +30,24 @@ export default function Register() {
         post(route('register'));
     };
 
+    const genderOptions = [
+        {
+            id: 'male',
+            value: 'Male'
+        },
+        {
+            id: 'female',
+            value: 'Female'
+        }
+    ];
+
     return (
         <GuestLayout>
             <Head title="Register" />
+
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                Register your account
+            </h1>
 
             <form onSubmit={submit}>
                 <div>
@@ -66,6 +85,41 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
+                    <InputLabel htmlFor="email" value="Birth date" />
+
+                    <TextInput
+                        id="birth_date"
+                        type="date"
+                        name="birth_date"
+                        value={data.birth_date}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        onChange={(e) => setData('birth_date', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.birth_date} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="email" value="Birth gender" />
+
+                    <SelectForm
+                        id="birth_sex"
+                        type="date"
+                        name="birth_sex"
+                        value={data.birth_sex}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        onChange={(e) => setData('birth_sex', e.target.value)}
+                        defaultValue={'Choose a gender'}
+                        options={genderOptions}
+                        required
+                    />
+                    <InputError message={errors.birth_sex} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
@@ -99,18 +153,22 @@ export default function Register() {
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
+
+                <div className="flex flex-col items-center justify-end mt-6 p-0.5">
+                    <Button type="submit" className="w-full" disabled={processing}>
+                        Register
+                    </Button>
+                </div>
+
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400 mt-6">
+                    Already registered?
                     <Link
                         href={route('login')}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="font-medium text-cyan-700 hover:underline pl-1"
                     >
-                        Already registered?
+                        Sign in
                     </Link>
-
-                    <PrimaryButton className="ml-4" disabled={processing}>
-                        Register
-                    </PrimaryButton>
-                </div>
+                </p>
             </form>
         </GuestLayout>
     );

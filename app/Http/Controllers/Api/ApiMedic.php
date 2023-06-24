@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\ApiErrorException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -20,7 +21,7 @@ class ApiMedic extends Controller
             $response = Http::apimedic()->get('symptoms');
 
             if($response->failed()){
-                throw new \Exception('Failed to fetch symptoms list');
+                throw new ApiErrorException('Failed to fetch symptoms list');
             }
 
             return $response->json();
@@ -45,12 +46,15 @@ class ApiMedic extends Controller
         $symptomsCacheName = sprintf('api-medic-symptoms-%s-%s',$userID,implode('-',Arr::sort($symptoms)));
 
         $diagnoses = Cache::remember($symptomsCacheName,now()->addHour(),function () use($symptoms,$gender,$year_of_birth) {
-            $data = Http::apimedic()->get('diagnosis',[
+            $response = Http::apimedic()->get('diagnosis',[
                 'symptoms' => json_encode($symptoms),
                 'gender' => $gender,
                 'year_of_birth' => $year_of_birth
             ]);
-            return $data->json();
+            if($response->failed()){
+                throw new ApiErrorException('Failed to fetch diagnoses list');
+            }
+            return $response->json();
         });
 
         return response()->json([

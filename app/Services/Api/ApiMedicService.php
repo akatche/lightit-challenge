@@ -2,6 +2,7 @@
 
 namespace App\Services\Api;
 
+use App\Exceptions\ApiErrorException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -24,7 +25,7 @@ class ApiMedicService
 
 
         if($response->failed()){
-            throw new \Exception('ApiMedic auth failed');
+            throw new ApiErrorException('ApiMedic auth failed');
         }
 
         $data = $response->json();
