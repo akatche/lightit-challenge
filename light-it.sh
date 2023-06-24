@@ -12,6 +12,13 @@ if [ "$reply" == "N" -o "$reply" == "n" ]; then
 fi
 
 echo ""
+echo "Copying Laravel env file..."
+echo ""
+if [ ! -f .env ]; then
+    cp -Rp .env.example .env
+fi
+
+echo ""
 echo "Installing Composer Dependencies..."
 echo ""
 docker run --rm \
