@@ -2,11 +2,10 @@
 
 namespace App\Services\Api;
 
-use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
-class SymptomCheckerApiService
+class ApiMedicService
 {
     public function getApiAuthToken() : string {
         if (Cache::has('symptom-checker-token')) {

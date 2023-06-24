@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Services\Api\SymptomCheckerApiService;
+use App\Services\Api\ApiMedicService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Http::macro('apimedic', function () {
 
-            $apiToken = (New SymptomCheckerApiService())->getApiAuthToken();
+            $apiToken = (New ApiMedicService())->getApiAuthToken();
 
             return Http::withToken($apiToken)
                 ->baseUrl(config('services.api_medic.health_service_url'))
