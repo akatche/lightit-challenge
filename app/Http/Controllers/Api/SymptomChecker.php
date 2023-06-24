@@ -3,58 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Services\Api\SymptomCheckerApiService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 
 class SymptomChecker extends Controller
 {
-    private $api;
-
-    public function __construct(SymptomCheckerApiService $api)
-    {
-        $this->api = $api->authorizedApi();
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $token = $this->api->get('');
+        $test = Http::apimedic()->get('symptoms',[
+            'symptoms' => json_encode([45]),
+            'language' => 'es-es',
+        ]);
 
-        return $token;
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return $test->json();
     }
 }

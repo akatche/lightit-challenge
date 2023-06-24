@@ -4,17 +4,10 @@ namespace App\Services\Api;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Http\Client\PendingRequest;
 
-class SymptomCheckerApiService implements ApiInterface
+class SymptomCheckerApiService
 {
-
-    public function authorizedApi() : PendingRequest
-    {
-        return Http::withToken($this->getApiAuthToken());
-    }
-
-    private function getApiAuthToken() : string {
+    public function getApiAuthToken() : string {
         if (Cache::has('symptom-checker-token')) {
             return Cache::get('symptom-checker-token');
         }
