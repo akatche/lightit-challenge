@@ -3,12 +3,12 @@
 namespace Tests\Feature\Api;
 
 use App\Models\User;
-use Closure;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
+use Illuminate\Http\Client\Request;
 
 class ApiMedicTest extends TestCase
 {
@@ -54,13 +54,30 @@ class ApiMedicTest extends TestCase
             ['*']
         );
 
+        // We test that the cache was used twice, it means the following,
+        // the first time when we set the cached values
+        // and the second time when we used its values
         Cache::shouldReceive('remember')
-            ->once()
+            ->twice()
             ->with('api-medic-symptoms', 3600, \Closure::class)
             ->andReturn($symptoms);
 
-        $response = $this->get('/api/symptoms');
+        // First Api call
+        $firstResponse = $this->getJson('/api/symptoms');
 
-        $response->assertStatus(200);
+        $firstResponse
+            ->assertStatus(200)
+            ->assertJson([
+                'data' => $symptoms,
+            ]);
+
+        // Second Api call
+        $secondResponse = $this->getJson('/api/symptoms');
+
+        $secondResponse
+            ->assertStatus(200)
+            ->assertJson([
+                'data' => $symptoms,
+            ]);
     }
 }
