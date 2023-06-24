@@ -19,6 +19,11 @@ if [ ! -f .env ]; then
 fi
 
 echo ""
+echo "Starting containers..."
+echo ""
+./vendor/bin/sail up -d
+
+echo ""
 echo "Installing Composer Dependencies..."
 echo ""
 docker run --rm \
@@ -29,9 +34,9 @@ docker run --rm \
     composer install --ignore-platform-reqs
 
 echo ""
-echo "Starting containers..."
+echo "Generating app key..."
 echo ""
-./vendor/bin/sail up -d
+./vendor/bin/sail php artisan key:generate
 
 echo ""
 echo "Performing migrations..."
@@ -42,7 +47,6 @@ echo ""
 echo "Installing node packages..."
 echo ""
 ./vendor/bin/sail npm install
-
 
 echo ""
 echo "Running dev server..."
