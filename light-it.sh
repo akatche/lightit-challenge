@@ -8,7 +8,7 @@ docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
     -w /var/www/html \
-    laravelsail/php81-composer:latest \
+    laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs
 
 echo ""
@@ -28,14 +28,14 @@ echo ""
 ./vendor/bin/sail php artisan optimize
 
 echo ""
-echo "Performing migrations..."
-echo ""
-./vendor/bin/sail php artisan migrate
-
-echo ""
 echo "Installing node packages..."
 echo ""
 ./vendor/bin/sail npm install
+
+echo ""
+echo "Performing migrations..."
+echo ""
+./vendor/bin/sail php artisan migrate
 
 echo ""
 echo "Running dev server..."
