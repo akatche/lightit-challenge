@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/greeting', [\App\Http\Controllers\Api\SymptomChecker::class,'index']);
+Route::get('/greeting', [\App\Http\Controllers\Api\ApiMedic::class,'symptoms']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

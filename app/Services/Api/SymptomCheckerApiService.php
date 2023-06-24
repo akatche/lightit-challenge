@@ -2,6 +2,7 @@
 
 namespace App\Services\Api;
 
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -21,6 +22,10 @@ class SymptomCheckerApiService
                 base64_encode(hash_hmac ( 'md5' , $loginUrl , config('services.api_medic.secret_key'), true ))
             ),
         ])->post($loginUrl);
+
+        if($response->failed()){
+            throw new \Exception('ApiMedic auth failed');
+        }
 
         $data = $response->json();
 

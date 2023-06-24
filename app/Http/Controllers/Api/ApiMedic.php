@@ -6,16 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
 
-class SymptomChecker extends Controller
+class ApiMedic extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function symptoms()
     {
         $test = Http::apimedic()->get('symptoms',[
-            'symptoms' => json_encode([45]),
-            'language' => 'es-es',
+            'symptoms' => json_encode([45])
         ]);
 
         return $test->json();

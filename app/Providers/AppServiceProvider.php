@@ -22,12 +22,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Http::macro('apimedic', function () {
+
             $apiToken = (New SymptomCheckerApiService())->getApiAuthToken();
+
             return Http::withToken($apiToken)
                 ->baseUrl(config('services.api_medic.health_service_url'))
                 ->withOptions([
                     'query' => [
-                        'token' => $apiToken
+                        'token' => $apiToken,
+                        'language' => 'es-es'
                     ]
                 ]);
         });
