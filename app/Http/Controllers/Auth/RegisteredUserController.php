@@ -35,9 +35,11 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:'.User::class,
-            'birth_date' => 'required|date',
+            'birth_date' => 'required|date|before:18 years ago',
             'birth_sex' => ['required', Rule::in(['male', 'female'])],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ],[
+            'birth_date.before' => 'User must be at least 18 years old',
         ]);
 
         $user = User::create([
