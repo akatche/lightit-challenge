@@ -23,7 +23,6 @@ class ApiMedicService
             ),
         ])->post($loginUrl);
 
-
         if($response->failed()){
             throw new ApiErrorException('ApiMedic auth failed');
         }

@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Sidebar = (props) => {
+const Sidebar = () => {
     return (
         <aside
-            className="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-teal-400 border-r border-gray-200 md:translate-x-0"
+            className="fixed top-0 left-0 z-40 w-64 h-screen pt-12 transition-transform -translate-x-full bg-teal-400 border-r border-gray-200 md:translate-x-0"
             aria-label="Sidenav"
             id="drawer-navigation"
         >

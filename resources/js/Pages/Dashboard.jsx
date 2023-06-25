@@ -1,5 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import Diagnosis from "@/Features/Diagnosis/Diagnosis.jsx";
 
 export default function Dashboard({ auth }) {
     return (
@@ -9,10 +10,10 @@ export default function Dashboard({ auth }) {
         >
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">You're logged in!</div>
+            <div className="py-12 bg-gray-50">
+                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 h-full">
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4 drop-shadow-md h-full">
+                        <Diagnosis />
                     </div>
                 </div>
             </div>

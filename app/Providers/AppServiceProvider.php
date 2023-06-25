@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
                 ->withOptions([
                     'query' => [
                         'token' => $apiToken,
-                        'language' => 'es-es'
+                        'language' => 'en-gb'
                     ]
                 ]);
         });

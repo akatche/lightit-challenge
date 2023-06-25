@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Exceptions\ApiErrorException;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\SymptomSearchRequest;
+use App\Models\Diagnose;
+use App\Models\User;
+use App\Models\UserSymptomsSearch;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-
 
 class ApiMedic extends Controller
 {
@@ -24,7 +27,12 @@ class ApiMedic extends Controller
                 throw new ApiErrorException('Failed to fetch symptoms list');
             }
 
-            return $response->json();
+            return collect($response->json())->map(function (array $symptom) {
+                return [
+                    'id' => $symptom['ID'],
+                    'name' => $symptom['Name']
+                ];
+            });
         });
 
         return response()->json([
@@ -35,21 +43,19 @@ class ApiMedic extends Controller
     /**
      * Get possible diagnoses for a symptom or list of symptoms
      */
-    public function diagnoses(Request $request)
+    public function diagnoses(SymptomSearchRequest $request)
     {
+        $user = $request->user();
+        $validatedRequest = $request->safe()->only('symptoms');
+        $symptoms = collect($validatedRequest['symptoms'])->map(fn($symptom)=>$symptom['id'])->toArray();
 
-        $userID = 10;
-        $symptoms = [16,23];
-        $gender  = 'male';
-        $year_of_birth = 1985;
+        $symptomsCacheName = sprintf('api-medic-symptoms-%s-%s',$user->id,implode('-',Arr::sort($symptoms)));
 
-        $symptomsCacheName = sprintf('api-medic-symptoms-%s-%s',$userID,implode('-',Arr::sort($symptoms)));
-
-        $diagnoses = Cache::remember($symptomsCacheName,now()->addHour(),function () use($symptoms,$gender,$year_of_birth) {
+        $diagnoses = Cache::remember($symptomsCacheName,now()->addHour(),function () use($user,$symptoms) {
             $response = Http::apimedic()->get('diagnosis',[
                 'symptoms' => json_encode($symptoms),
-                'gender' => $gender,
-                'year_of_birth' => $year_of_birth
+                'gender' => $user->birth_sex,
+                'year_of_birth' => $user->birth_date->year
             ]);
             if($response->failed()){
                 throw new ApiErrorException('Failed to fetch diagnoses list');
@@ -57,8 +63,44 @@ class ApiMedic extends Controller
             return $response->json();
         });
 
+        $search = $this->saveHistoricData($user,$validatedRequest['symptoms'],$diagnoses);
+
         return response()->json([
-            'data' => $diagnoses
+            'data' => $search->diagnoses
+        ]);
+    }
+
+    private function saveHistoricData(User $user,array $symptoms, array $diagnoses) : UserSymptomsSearch{
+        $newSearch = UserSymptomsSearch::create([
+            'user_id' => $user->id,
+            'symptoms' =>  collect($symptoms)->map(fn($symptom)=>$symptom['name'])
+        ]);
+
+        foreach ($diagnoses as $diagnosis){
+            Diagnose::create([
+                'user_symptoms_search_id' => $newSearch->id,
+                'name' => $diagnosis['Issue']['Name'],
+                'accuracy' => $diagnosis['Issue']['Accuracy'],
+                'specialists' => collect($diagnosis['Specialisation'])->map(fn($specialist)=>$specialist['Name'])
+            ]);
+        }
+
+        return $newSearch;
+    }
+
+    /**
+     * Updates a diagnose
+     */
+    public function isDiagnoseCorrect(Diagnose $diagnose): JsonResponse
+    {
+        $this->authorize('update', $diagnose);
+
+        $diagnose->update([
+            'correct' => request('reply')
+        ]);
+
+        return response()->json([
+            'response' => true
         ]);
     }
 }

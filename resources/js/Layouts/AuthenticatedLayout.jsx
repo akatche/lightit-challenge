@@ -1,10 +1,10 @@
 import React from 'react';
 import {Head} from '@inertiajs/react';
-import MainNavigation from "@/Layouts/Dashboard/MainNavigation.jsx";
-import Sidebar from "@/Layouts/Dashboard/Sidebar.jsx";
-import DashboardContext from "@/Layouts/Dashboard/DashboardContext.js";
+import MainNavigation from "@/Components/Layouts/MainNavigation.jsx";
+import Sidebar from "@/Components/Layouts/Sidebar.jsx";
+import DashboardContext from "@/Components/Layouts/DashboardContext.js";
 
-export default function Authenticated({ user, header, children }) {
+export default function Authenticated({ user, children }) {
 
     const data = {
         user: user
@@ -12,12 +12,12 @@ export default function Authenticated({ user, header, children }) {
 
     return (
         <DashboardContext.Provider value={data}>
-            <div className="antialiased bg-gray-50 dark:bg-gray-900">
+            <div className="antialiased bg-gray-50">
                 <Head title="Dashboard" />
                 <MainNavigation />
                 <Sidebar />
-                <main className="p-4 md:ml-64 h-auto pt-20">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                <main className="p-2 md:ml-64 h-auto">
+                    <div className="grid grid-cols-1 h-screen p-2">
                         {children}
                     </div>
                 </main>
