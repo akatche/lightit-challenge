@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 const Sidebar = (props) => {
     return (
         <aside
-            className="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+            className="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-teal-400 border-r border-gray-200 md:translate-x-0"
             aria-label="Sidenav"
             id="drawer-navigation"
         >
-            <div className="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
+            <div className="overflow-y-auto py-5 px-3 h-full bg-teal-300 text-white">
                 <ul className="space-y-2">
                     <li>
                         <a
                             href="#"
-                            className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                            className="flex items-center p-2 text-base font-medium rounded-lg hover:bg-teal-400 group"
                         >
-                            <svg className="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true"
-                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <svg className="w-[16px] h-[16px] text-gray-800 fill-white" aria-hidden="true"
+                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"
+                            >
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
                                       strokeWidth="1" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
@@ -26,9 +27,9 @@ const Sidebar = (props) => {
                     <li>
                         <a
                             href="#"
-                            className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                            className="flex items-center p-2 text-base font-medium rounded-lg hover:bg-teal-400 group"
                         >
-                            <svg className="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true"
+                            <svg className="w-[16px] h-[16px] text-gray-800 fill-white" aria-hidden="true"
                                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
                                       strokeWidth="1"

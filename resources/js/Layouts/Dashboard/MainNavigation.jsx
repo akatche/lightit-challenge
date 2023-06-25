@@ -1,14 +1,11 @@
 import React, {useContext} from 'react';
-import PropTypes from 'prop-types';
 import DashboardContext from "@/Layouts/Dashboard/DashboardContext.js";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink.jsx";
 import {Link} from "@inertiajs/react";
+import ApplicationLogo from "@/Components/ApplicationLogo.jsx";
 
-const MainNavigation = (props) => {
+const MainNavigation = ({}) => {
 
     const { user } = useContext(DashboardContext);
-
-    console.log(user);
 
     return (
         <nav
@@ -49,15 +46,13 @@ const MainNavigation = (props) => {
                         </svg>
                         <span className="sr-only">Toggle sidebar</span>
                     </button>
-                    <a href="https://flowbite.com" className="flex items-center justify-between mr-4">
-                        <img
-                            src="https://flowbite.s3.amazonaws.com/logo.svg"
-                            className="mr-3 h-8"
-                            alt="Flowbite Logo"
-                        />
-                        <span
-                            className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-                    </a>
+                    <Link
+                        href={route('dashboard')}
+                        className="flex items-center justify-between mr-4"
+                        as={'a'}
+                    >
+                        <ApplicationLogo />
+                    </Link>
                 </div>
                 <div className="flex items-center lg:order-2">
                     <button
@@ -142,9 +137,5 @@ const MainNavigation = (props) => {
         </nav>
     );
 }
-
-MainNavigation.propTypes = {
-
-};
 
 export default MainNavigation;

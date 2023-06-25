@@ -1,7 +1,7 @@
 export default function ApplicationLogo(props) {
     return (
         <div className="flex flex-row items-center space-x-2">
-             <span  className="text-white font-bold text-2xl">
+             <span className="text-teal-300 font-bold text-2xl">
                 SymptoSense
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 stroke-red-600 fill-red-600">
