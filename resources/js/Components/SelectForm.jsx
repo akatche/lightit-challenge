@@ -29,8 +29,8 @@ const SelectForm = forwardRef(({
             <option selected>{defaultValue}</option>
             <>
                 {
-                    options.length > 0 && options.map(option => {
-                        return <option value={option.id}>{option.value}</option>
+                    options.length > 0 && options.map((option,index) => {
+                        return <option value={option.id} key={index}>{option.value}</option>
                     })
                 }
             </>

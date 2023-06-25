@@ -12,6 +12,8 @@ export default function ForgotPassword({ status }) {
     const submit = (e) => {
         e.preventDefault();
 
+        console.log("holaaa");
+
         post(route('password.email'));
     };
 
@@ -40,7 +42,7 @@ export default function ForgotPassword({ status }) {
                 <InputError message={errors.email} className="mt-2" />
 
                 <div className="flex items-center justify-end mt-4">
-                    <Button className="w-full" disabled={processing}>
+                    <Button type="submit" className="w-full" disabled={processing}>
                         Email Password Reset Link
                     </Button>
                 </div>
