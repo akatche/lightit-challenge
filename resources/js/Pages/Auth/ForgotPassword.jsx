@@ -12,8 +12,6 @@ export default function ForgotPassword({ status }) {
     const submit = (e) => {
         e.preventDefault();
 
-        console.log("holaaa");
-
         post(route('password.email'));
     };
 
