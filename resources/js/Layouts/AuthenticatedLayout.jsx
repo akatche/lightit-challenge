@@ -5,8 +5,13 @@ import Sidebar from "@/Layouts/Dashboard/Sidebar.jsx";
 import DashboardContext from "@/Layouts/Dashboard/DashboardContext.js";
 
 export default function Authenticated({ user, header, children }) {
+
+    const data = {
+        user: user
+    }
+
     return (
-        <DashboardContext.Provider value={user}>
+        <DashboardContext.Provider value={data}>
             <div className="antialiased bg-gray-50 dark:bg-gray-900">
                 <Head title="Dashboard" />
                 <MainNavigation />
