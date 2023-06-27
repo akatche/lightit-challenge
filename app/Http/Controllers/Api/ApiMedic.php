@@ -99,6 +99,10 @@ class ApiMedic extends Controller
             'correct' => request('reply')
         ]);
 
+        if(!request('reply')){
+            $diagnose->touch();
+        }
+
         return response()->json([
             'response' => true
         ]);

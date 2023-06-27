@@ -1,6 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Link} from "@inertiajs/react";
+import DashboardContext from "@/Components/Layouts/DashboardContext.js";
+import { Button } from 'flowbite-react';
 
 const Sidebar = () => {
+
+
+    const { user } = useContext(DashboardContext);
+
     return (
         <aside
             className="fixed top-0 left-0 z-40 w-64 h-screen pt-12 transition-transform -translate-x-full bg-teal-400 border-r border-gray-200 md:translate-x-0"
@@ -8,7 +15,19 @@ const Sidebar = () => {
             id="drawer-navigation"
         >
             <div className="overflow-y-auto py-5 px-3 h-full bg-teal-300 text-white">
-                <ul className="space-y-2">
+                <div className={'p-2 text-center border-b flex flex-col space-y-2'}>
+                    <h1 className="text-2xl font-bold">{user.name}</h1>
+                    <h2>{user.email}</h2>
+                    <Link
+                        method="post"
+                        href={route('logout')}
+                        className="block py-2 px-4 text-sm bg-cyan-700 rounded-md hover:bg-cyan-800 w-full"
+                        as={'button'}
+                    >
+                        Sign out
+                    </Link>
+                </div>
+                <ul className="space-y-2 py-2">
                     <li>
                         <a
                             href={route('dashboard')}

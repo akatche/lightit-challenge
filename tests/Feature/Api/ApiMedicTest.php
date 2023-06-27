@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Models\Diagnose;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
@@ -150,5 +151,53 @@ class ApiMedicTest extends TestCase
             ->assertJson([
                 'message' => 'Failed to fetch symptoms list',
             ]);
+    }
+
+    public function test_diagnose_can_be_set_as_correct() : void{
+
+        $diagnose = Diagnose::factory()->create();
+
+        Sanctum::actingAs($diagnose->search->user, ['*']);
+
+        $response = $this->patchJson("/api/diagnoses/$diagnose->id/correct",[
+            'reply' => true
+        ]);
+
+        $response->assertOk();
+
+        $this->assertTrue($diagnose->fresh()->correct);
+    }
+
+    public function test_diagnose_can_be_set_as_incorrect() : void{
+
+        $diagnose = Diagnose::factory()->create();
+
+        Sanctum::actingAs($diagnose->search->user, ['*']);
+
+        $response = $this->patchJson("/api/diagnoses/$diagnose->id/correct",[
+            'reply' => false
+        ]);
+
+        $response->assertOk();
+
+        $this->assertFalse($diagnose->fresh()->correct);
+    }
+
+    public function test_diagnose_can_only_be_updated_by_the_user_show_created_it() : void{
+
+        $diagnose = Diagnose::factory()->create();
+
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
+        $response = $this->patchJson("/api/diagnoses/$diagnose->id/correct",[
+            'reply' => true
+        ]);
+
+        $response->assertForbidden();
+
+        $this->assertEquals($diagnose->correct,$diagnose->fresh()->correct);
     }
 }
