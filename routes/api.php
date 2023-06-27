@@ -21,9 +21,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('/diagnoses/{diagnose}/correct', [ApiMedic::class,'isDiagnoseCorrect'])->name('api.diagnoses.correct');
 });
 
-Route::get('/symptoms', [ApiMedic::class,'symptoms'])->name('api.symptoms');
-
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

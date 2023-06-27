@@ -102,7 +102,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Birth gender" />
+                    <InputLabel htmlFor="email" value="Birth sex" />
 
                     <SelectForm
                         id="birth_sex"
