@@ -38,10 +38,14 @@ echo ""
 ./vendor/bin/sail php artisan migrate --database=mysql
 
 echo ""
+echo "Warm app the app..."
+echo ""
+./vendor/bin/sail artisan app:warm-up-app
+
+echo ""
 echo "Running dev server..."
 echo ""
 ./vendor/bin/sail npm run build
-
 
 echo ""
 echo "Now, you can check the app on http://localhost"
