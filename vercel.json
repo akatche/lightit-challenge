@@ -17,7 +17,7 @@
     "APP_ENV": "production",
     "APP_DEBUG": "false",
     "APP_KEY": "base64:d2UcZngMWIJK9RWrEdsTSzhuw+IBNsg4Hl5U2CpoDT4=",
-    "APP_URL": "https://www.laravel-example.vercel.app",
+    "APP_URL": "https://lightit-challenge-six.vercel.app",
     "API_MEDIC_USERNAME": "",
     "API_MEDIC_PASSWORD": "",
     "API_MEDIC_AUTH_SERVICE": "",
