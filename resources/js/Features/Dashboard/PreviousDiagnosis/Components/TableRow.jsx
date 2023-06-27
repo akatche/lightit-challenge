@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Table} from "flowbite-react";
+import CorrectDiagnoseButtons from "@/Features/Dashboard/Shared/CorrectDiagnoseButtons.jsx";
 
 const TableRow = ({data}) => {
 
@@ -23,14 +24,9 @@ const TableRow = ({data}) => {
                 {specialists}
             </Table.Cell>
             <Table.Cell>
-                <a
-                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-                    href="/tables"
-                >
-                    <p>
-                        Edit
-                    </p>
-                </a>
+                <div className={"grid grid-cols-2 gap-4"}>
+                    <CorrectDiagnoseButtons diagnose={data} />
+                </div>
             </Table.Cell>
         </Table.Row>
     );

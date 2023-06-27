@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Button} from "flowbite-react";
 
@@ -6,6 +6,13 @@ const CorrectDiagnoseButtons = ({diagnose}) => {
 
     const [submitting,setSubmitting] = useState( false);
     const [selected,setSelected] = useState( '');
+
+    useEffect(() => {
+        if(diagnose.created_at !== diagnose.updated_at){
+            setSelected(diagnose.correct ? 'yes' : 'no' )
+        }
+    }, [diagnose]);
+
 
     const submit = (e,reply) => {
         e.preventDefault();
