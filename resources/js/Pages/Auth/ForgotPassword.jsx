@@ -1,6 +1,6 @@
 import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import TextInput from '@/Components/TextInput';
+import InputError from '@/Components/Form/InputError.jsx';
+import TextInput from '@/Components/Form/TextInput.jsx';
 import { Head, useForm } from '@inertiajs/react';
 import {Button} from "flowbite-react";
 

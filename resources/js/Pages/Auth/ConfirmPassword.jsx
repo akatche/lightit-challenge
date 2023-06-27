@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import InputError from '@/Components/Form/InputError.jsx';
+import InputLabel from '@/Components/Form/InputLabel.jsx';
+import PrimaryButton from '@/Components/Form/PrimaryButton.jsx';
+import TextInput from '@/Components/Form/TextInput.jsx';
 import { Head, useForm } from '@inertiajs/react';
 
 export default function ConfirmPassword() {

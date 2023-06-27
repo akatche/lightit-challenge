@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useForm } from '@inertiajs/react';
-import InputError from "@/Components/InputError.jsx";
+import InputError from "@/Components/Form/InputError.jsx";
 import {Button} from "flowbite-react";
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
