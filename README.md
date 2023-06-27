@@ -55,15 +55,16 @@ you don´t need to maintain for instance a Laravel app + React app, which could 
 ### App performance
 I´m going to divide this in 3 sections
 #### Auth with APIMEDIC service:
-I cached the api token from apimedic, which will be stored for the entire time this token is valid through, then, it will be refetched
+In order to perform any api calls to the apimedic service, an auth token is needed. This is why I decided to cache the auth token
+for the entire time this token is valid through, then, it will be refetched.
 
 #### Symptoms list:
-Fetched and cached this value for an hour, so it´s not recreated every time any user uses this feature
+Fetched and cached this value for an hour, so it´s not recreated every time any user uses this feature.
 
 #### Diagnose:
 Thinking in the fact that perhaps users can perform repeated searches on the same topic, 
 I´ve decided to cache diagnoses replies from the API using the user_id and the symptoms ids as value.
-Therefore, if the user(id=10), makes a query (symptoms = 158,87), next time that query won´t be made and retrieved from the cache
+Therefore, if the user(id=10), makes a query (symptoms = 158,87), next time that query won´t be made and retrieved from the cache.
 
 
 ### Features which could be added 
