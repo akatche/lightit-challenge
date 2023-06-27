@@ -5,7 +5,7 @@ import {Button} from "flowbite-react";
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { Spinner } from 'flowbite-react';
-import DiagnosisContext from "@/Features/Diagnosis/DiagnosisContext.js";
+import DiagnosisContext from "@/Features/Dashboard/Diagnosis/DiagnosisContext.js";
 
 const Symptoms = () => {
 

@@ -1,6 +1,6 @@
 import React, {useContext, useMemo} from 'react';
-import DiagnosisCard from "@/Features/Diagnosis/Components/DiagnosisCard.jsx";
-import DiagnosisContext from "@/Features/Diagnosis/DiagnosisContext.js";
+import DiagnosisCard from "@/Features/Dashboard/Diagnosis/Components/DiagnosisCard.jsx";
+import DiagnosisContext from "@/Features/Dashboard/Diagnosis/DiagnosisContext.js";
 
 const DiagnosisResults = () => {
 

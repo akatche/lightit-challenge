@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardFooter from "@/Features/Diagnosis/Components/Card/CardFooter.jsx";
-import CardBody from "@/Features/Diagnosis/Components/Card/CardBody.jsx";
+import CardFooter from "@/Features/Dashboard/Diagnosis/Components/Card/CardFooter.jsx";
+import CardBody from "@/Features/Dashboard/Diagnosis/Components/Card/CardBody.jsx";
 
 const DiagnosisCard = ({diagnose,number}) => {
     return (

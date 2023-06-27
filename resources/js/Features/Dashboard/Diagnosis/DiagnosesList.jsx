@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
-import Skeleton from "@/Features/Diagnosis/Components/Skeleton.jsx";
+import Skeleton from "@/Features/Dashboard/Diagnosis/Components/Skeleton.jsx";
 import { Alert } from 'flowbite-react';
-import DiagnosisContext from "@/Features/Diagnosis/DiagnosisContext.js";
-import DiagnosisResults from "@/Features/Diagnosis/Components/DiagnosisResults.jsx";
+import DiagnosisContext from "@/Features/Dashboard/Diagnosis/DiagnosisContext.js";
+import DiagnosisResults from "@/Features/Dashboard/Diagnosis/Components/DiagnosisResults.jsx";
 
 const DiagnosesList = () => {
 

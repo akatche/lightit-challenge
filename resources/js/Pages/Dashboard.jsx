@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import Diagnosis from "@/Features/Diagnosis/Diagnosis.jsx";
+import Diagnosis from "@/Features/Dashboard/Diagnosis/Diagnosis.jsx";
 
 export default function Dashboard({ auth }) {
     return (

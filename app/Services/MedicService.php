@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Services\Api;
+namespace App\Services;
 
 use App\Exceptions\ApiErrorException;
+use App\Models\Diagnose;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Database\Eloquent\Builder;
 
-class ApiMedicService
+class MedicService
 {
     public function getApiAuthToken() : string {
         if (Cache::has('api-medic-auth-token')) {
@@ -32,6 +34,12 @@ class ApiMedicService
         return Cache::remember('api-medic-auth-token', $data['ValidThrough'], function () use($data) {
             return $data['Token'];
         });
+    }
+
+    public function getHistoricData() : array{
+        return Diagnose::with('search')->whereHas('search', function (Builder $query) {
+            $query->where('user_id', '=',\request()->user()->id );
+        })->get()->toArray();
     }
 
 }

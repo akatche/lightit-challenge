@@ -1,5 +1,5 @@
 import React, {useContext, useMemo} from 'react';
-import DiagnosisContext from "@/Features/Diagnosis/DiagnosisContext.js";
+import DiagnosisContext from "@/Features/Dashboard/Diagnosis/DiagnosisContext.js";
 
 const Skeleton = () => {
 

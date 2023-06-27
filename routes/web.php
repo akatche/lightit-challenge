@@ -25,7 +25,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard/previous', function () {
-    return Inertia::render('Historic');
+    return Inertia::render('Historic',[
+        'historicData' => (new \App\Services\MedicService())->getHistoricData()
+    ]);
 })->middleware(['auth', 'verified'])->name('historic');
 
 Route::middleware('auth')->group(function () {

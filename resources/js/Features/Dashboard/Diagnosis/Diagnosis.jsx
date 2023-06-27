@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import Symptoms from "@/Features/Diagnosis/Symptoms.jsx";
-import DiagnosesList from "@/Features/Diagnosis/DiagnosesList.jsx";
-import DiagnosisContext from "@/Features/Diagnosis/DiagnosisContext.js";
+import Symptoms from "@/Features/Dashboard/Diagnosis/Symptoms.jsx";
+import DiagnosesList from "@/Features/Dashboard/Diagnosis/DiagnosesList.jsx";
+import DiagnosisContext from "@/Features/Dashboard/Diagnosis/DiagnosisContext.js";
 
 export default function Diagnosis() {
 
