@@ -86,3 +86,4 @@ If I had more time or this could become a live app I´d add the following featur
 * Add animations to make the app more friendly from an UX perspective
 * Add a landing page
 * Explain on register page why birth sex is required and why there are only 2 possible options
+* Optimize Tailwind production size
