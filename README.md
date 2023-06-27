@@ -12,7 +12,7 @@
 git clone https://github.com/akatche/lightit-with-sail akatcheroff && cd akatcheroff && cp -Rp .env.example .env
 ```
 
-* Update the following env variables in .env file with the credentials provided on an email*
+* Update the following env variables in .env file with the credentials provided on an email
 ```
 API_MEDIC_USERNAME=
 API_MEDIC_PASSWORD=
