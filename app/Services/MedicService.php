@@ -36,10 +36,10 @@ class MedicService
         });
     }
 
-    public function getHistoricData() : array{
+    public function getHistoricData(): \Illuminate\Contracts\Pagination\LengthAwarePaginator {
         return Diagnose::with('search')->whereHas('search', function (Builder $query) {
             $query->where('user_id', '=',\request()->user()->id );
-        })->get()->toArray();
+        })->paginate(10);
     }
 
 }

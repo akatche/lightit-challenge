@@ -8,13 +8,13 @@ const PreviousDiagnosis = ({historicData}) => {
             <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
                 Previous <span className="underline underline-offset-3 decoration-8 decoration-blue-400">diagnoses</span>
             </h1>
-            <HistoricTable data={historicData} />
+            <HistoricTable tableData={historicData} />
         </div>
     );
 }
 
 PreviousDiagnosis.propTypes = {
-    historicData: PropTypes.array
+    historicData: PropTypes.object
 };
 
 export default PreviousDiagnosis;
