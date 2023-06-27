@@ -7,7 +7,14 @@ const TableRow = ({data}) => {
 
     const sypmtoms = data.search.symptoms.join(', ');
 
-    const specialists = data.specialists.join(', ');
+    const date = new Date(data.created_at);
+
+    const formattedDate = date.toLocaleString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
 
     return (
         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -21,7 +28,16 @@ const TableRow = ({data}) => {
                 {Math.round(data.accuracy)}%
             </Table.Cell>
             <Table.Cell>
-                {specialists}
+                <ul>
+                    {
+                        data.specialists.map((specialist,index)=>{
+                            return <li key={index}>{specialist}</li>
+                        })
+                    }
+                </ul>
+            </Table.Cell>
+            <Table.Cell>
+                <p className={''}>{formattedDate}</p>
             </Table.Cell>
             <Table.Cell>
                 <div className={"grid grid-cols-2 gap-4"}>

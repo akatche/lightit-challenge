@@ -5,8 +5,6 @@ import TableRow from "@/Features/Dashboard/PreviousDiagnosis/Components/TableRow
 
 const HistoricTable = ({tableData}) => {
 
-    console.log(tableData);
-
     return (
         <div className="relative overflow-x-auto">
             <Table hoverable>
@@ -22,6 +20,9 @@ const HistoricTable = ({tableData}) => {
                     </Table.HeadCell>
                     <Table.HeadCell>
                         Specialist
+                    </Table.HeadCell>
+                    <Table.HeadCell>
+                        Date
                     </Table.HeadCell>
                     <Table.HeadCell>
                       Correct
