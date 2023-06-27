@@ -12,11 +12,6 @@ docker run --rm \
     composer install --ignore-platform-reqs
 
 echo ""
-echo "Copying Laravel env file..."
-echo ""
-cp -Rp .env.example .env
-
-echo ""
 echo "Starting containers..."
 echo ""
 ./vendor/bin/sail up -d
@@ -31,6 +26,7 @@ echo "Generating app key..."
 echo ""
 ./vendor/bin/sail php artisan key:generate
 ./vendor/bin/sail php artisan optimize
+
 
 echo ""
 echo "Performing migrations..."
