@@ -66,6 +66,8 @@ Thinking in the fact that perhaps users can perform repeated searches on the sam
 I´ve decided to cache diagnoses replies from the API using the user_id and the symptoms ids as value.
 Therefore, if the user(id=10), makes a query (symptoms = 158,87), next time that query won´t be made and will be retrieved directly from the cache.
 
+### Testing
+I´ve added some backend tests, which could be triggered using ./vendor/bin/sail test. I like to use Cypress for E2E tests, so this could have been an use case for using this tool.
 
 ### Features which could be added 
 If I had more time or this could become a live app I´d add the following features
