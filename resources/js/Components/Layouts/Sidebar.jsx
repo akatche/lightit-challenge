@@ -11,7 +11,7 @@ const Sidebar = () => {
                 <ul className="space-y-2">
                     <li>
                         <a
-                            href="#"
+                            href={route('dashboard')}
                             className="flex items-center p-2 text-base font-medium rounded-lg hover:bg-teal-400 group"
                         >
                             <svg className="w-[16px] h-[16px] text-gray-800 fill-white" aria-hidden="true"
@@ -25,7 +25,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <a
-                            href="#"
+                            href={route('historic')}
                             className="flex items-center p-2 text-base font-medium rounded-lg hover:bg-teal-400 group"
                         >
                             <svg className="w-[16px] h-[16px] text-gray-800 fill-white" aria-hidden="true"
