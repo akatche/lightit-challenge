@@ -32,6 +32,12 @@ If for some reason the migration didn´t succesfully run, copy and execute the f
 ```
 ./vendor/bin/sail php artisan migrate
 ```
+
+If Laravel Sail is already installed, perhaps triggering could solve some issues
+```
+./vendor/bin/sail build --no-cache
+```
+
 ## **Architectural Decisions**
 
 I´ve decided to use the Inertia stack (Laravel + React) + Tailwind. 
