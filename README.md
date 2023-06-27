@@ -9,7 +9,7 @@
 * On a command line, paste the following command
 
 ```
-git clone https://github.com/akatche/lightit-with-sail akatcheroff && cd akatcheroff && cp -Rp .env.example .env
+git clone https://github.com/akatche/lightit-challenge akatcheroff && cd akatcheroff && cp -Rp .env.example .env
 ```
 
 * Update the following env variables in .env file with the credentials provided on an email
