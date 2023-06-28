@@ -15,7 +15,7 @@ const Sidebar = () => {
             id="drawer-navigation"
         >
             <div className="overflow-y-auto py-5 px-3 h-full bg-teal-300 text-white">
-                <div className={'p-2 text-center border-b flex flex-col space-y-2'}>
+                <div className={'p-2 text-center border-b flex flex-col flex-wrap overflow-hidden space-y-2'}>
                     <h1 className="text-2xl font-bold">{user.name}</h1>
                     <h2>{user.email}</h2>
                     <Link
