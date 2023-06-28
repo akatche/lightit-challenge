@@ -1,8 +1,8 @@
 import React, {useContext, useMemo} from 'react';
-import DiagnosisCard from "@/Features/Dashboard/Diagnosis/Components/DiagnosisCard.jsx";
-import DiagnosisContext from "@/Features/Dashboard/Diagnosis/DiagnosisContext.js";
+import DiagnosesCard from "@/Features/Dashboard/Diagnoses/Components/DiagnosesCard.jsx";
+import DiagnosisContext from "@/Features/Dashboard/Diagnoses/DiagnosesContext.js";
 
-const DiagnosisResults = () => {
+const DiagnosesResults = () => {
 
     const { diagnoses,fetchingDiagnosis } = useContext(DiagnosisContext);
 
@@ -14,11 +14,11 @@ const DiagnosisResults = () => {
         <>
             {
                 showDiagnoses && diagnoses.map((diagnose,index)=>{
-                    return <DiagnosisCard diagnose={diagnose} key={index} number={index + 1} />
+                    return <DiagnosesCard diagnose={diagnose} key={index} number={index + 1} />
                 })
             }
         </>
     );
 }
 
-export default DiagnosisResults;
+export default DiagnosesResults;

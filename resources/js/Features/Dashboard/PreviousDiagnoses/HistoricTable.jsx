@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'flowbite-react';
-import TableRow from "@/Features/Dashboard/PreviousDiagnosis/Components/TableRow.jsx";
-import Pagination from "@/Features/Dashboard/PreviousDiagnosis/Components/Pagination.jsx";
+import TableRow from "@/Features/Dashboard/PreviousDiagnoses/Components/TableRow.jsx";
+import Pagination from "@/Features/Dashboard/PreviousDiagnoses/Components/Pagination.jsx";
 
 const HistoricTable = ({tableData}) => {
 
@@ -27,6 +27,9 @@ const HistoricTable = ({tableData}) => {
                     </Table.HeadCell>
                     <Table.HeadCell>
                       Correct
+                    </Table.HeadCell>
+                    <Table.HeadCell>
+
                     </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">

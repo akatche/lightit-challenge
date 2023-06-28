@@ -91,7 +91,7 @@ class ApiMedic extends Controller
     /**
      * Updates a diagnose
      */
-    public function isDiagnoseCorrect(Diagnose $diagnose): JsonResponse
+    public function isDiagnoseCorrect(Diagnose $diagnose)
     {
         $this->authorize('update', $diagnose);
 
@@ -103,8 +103,6 @@ class ApiMedic extends Controller
             $diagnose->touch();
         }
 
-        return response()->json([
-            'response' => true
-        ]);
+        return $diagnose->fresh();
     }
 }

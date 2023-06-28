@@ -1,11 +1,14 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Button} from "flowbite-react";
+import DiagnosisContext from "@/Features/Dashboard/Diagnoses/DiagnosesContext.js";
 
 const CorrectDiagnoseButtons = ({diagnose}) => {
 
     const [submitting,setSubmitting] = useState( false);
     const [selected,setSelected] = useState( '');
+
+    const { updateDiagnosis } = useContext(DiagnosisContext);
 
     useEffect(() => {
         if(diagnose.created_at !== diagnose.updated_at){
@@ -24,7 +27,11 @@ const CorrectDiagnoseButtons = ({diagnose}) => {
             diagnose: diagnose.id
         }), {
             reply: reply
-        }).finally(() => {
+        })
+        .then((res) => {
+            updateDiagnosis(diagnose.id,res.data)
+        })
+        .finally(() => {
             setSubmitting(false)
         })
     };

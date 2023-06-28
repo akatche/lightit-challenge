@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
-import Skeleton from "@/Features/Dashboard/Diagnosis/Components/Skeleton.jsx";
+import Skeleton from "@/Features/Dashboard/Diagnoses/Components/Skeleton.jsx";
 import { Alert } from 'flowbite-react';
-import DiagnosisContext from "@/Features/Dashboard/Diagnosis/DiagnosisContext.js";
-import DiagnosisResults from "@/Features/Dashboard/Diagnosis/Components/DiagnosisResults.jsx";
+import DiagnosisContext from "@/Features/Dashboard/Diagnoses/DiagnosesContext.js";
+import DiagnosesResults from "@/Features/Dashboard/Diagnoses/Components/DiagnosesResults.jsx";
 
 const DiagnosesList = () => {
 
@@ -19,8 +19,8 @@ const DiagnosesList = () => {
                     </span>
                 </Alert>
             }
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-                <DiagnosisResults />
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <DiagnosesResults />
                 <Skeleton />
             </div>
         </div>

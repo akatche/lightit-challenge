@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Table} from "flowbite-react";
 import CorrectDiagnoseButtons from "@/Features/Dashboard/Shared/CorrectDiagnoseButtons.jsx";
+import DiagnoseCorrect from "@/Features/Dashboard/Shared/DiagnoseCorrect.jsx";
 
 const TableRow = ({data}) => {
 
@@ -38,6 +39,9 @@ const TableRow = ({data}) => {
             </Table.Cell>
             <Table.Cell>
                 <p className={''}>{formattedDate}</p>
+            </Table.Cell>
+            <Table.Cell>
+                <DiagnoseCorrect diagnose={data} />
             </Table.Cell>
             <Table.Cell>
                 <div className={"grid grid-cols-2 gap-4"}>
