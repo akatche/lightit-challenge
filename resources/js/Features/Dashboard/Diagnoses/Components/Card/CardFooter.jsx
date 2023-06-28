@@ -6,11 +6,13 @@ import DiagnoseCorrect from "@/Features/Dashboard/Shared/DiagnoseCorrect.jsx";
 const CardFooter = ({diagnose}) => {
     return (
         <div
-            className="border-t border-neutral-100 pt-2 mt-auto grid grid-cols-2 gap-4 place-content-between items-center">
-            <p className={'text-sm flex items-center gap-1'}>
-                Correct diagnose?
+            className="border-t border-neutral-100 pt-2 mt-auto gap-4 place-content-between items-center
+             flex flex-col md:flex-row
+             ">
+            <div className={'text-sm flex items-center gap-1'}>
+                <p>Correct diagnose?</p>
                 <DiagnoseCorrect diagnose={diagnose} />
-            </p>
+            </div>
             <div className={"grid grid-cols-2 gap-4"}>
                 <CorrectDiagnoseButtons diagnose={diagnose} />
             </div>
