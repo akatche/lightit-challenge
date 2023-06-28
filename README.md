@@ -77,6 +77,7 @@ I´ve added some backend tests, which could be triggered using ./vendor/bin/sail
 
 ### Features which could be added 
 If I had more time or this could become a live app I´d add the following features
+* Filtering and searching on the historic table
 * Add a Rate Limit to api calls
 * Edit profile feature
 * Share diagnoses on WhatsApp with family/friends
